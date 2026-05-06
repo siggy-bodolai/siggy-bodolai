@@ -18,14 +18,16 @@ function ProjectRow({ group, cols, sizes, gap }: { group: Project[]; cols: strin
     <div className={`grid ${cols} ${gap}`}>
       {group.map((project) => (
         <Link key={`img-${project.id}`} href={`/projects/${project.id}`} className="group row-start-1 self-end">
-          <Image
-            src={getArchiveImage(project)}
-            alt={project.title}
-            width={0}
-            height={0}
-            sizes={sizes}
-            className="w-full h-auto transition-opacity duration-500 group-hover:opacity-80"
-          />
+          {getArchiveImage(project) && (
+            <Image
+              src={getArchiveImage(project)}
+              alt={project.title}
+              width={0}
+              height={0}
+              sizes={sizes}
+              className="w-full h-auto transition-opacity duration-500 group-hover:opacity-80"
+            />
+          )}
         </Link>
       ))}
       {group.map((project) => (
@@ -41,8 +43,10 @@ function ProjectRow({ group, cols, sizes, gap }: { group: Project[]; cols: strin
 
 export default async function ArchivePage() {
   const projects = await getProjects();
-  const mobileRows = [projects.slice(0, 2), projects.slice(2, 4), projects.slice(4)].filter((g) => g.length > 0);
-  const desktopRows = [projects.slice(0, 4), projects.slice(4)].filter((g) => g.length > 0);
+  const chunk = (arr: Project[], size: number) =>
+    Array.from({ length: Math.ceil(arr.length / size) }, (_, i) => arr.slice(i * size, i * size + size));
+  const mobileRows = chunk(projects, 2);
+  const desktopRows = chunk(projects, 4);
 
   return (
     <main className="min-h-[100dvh] bg-background px-6 md:px-10 lg:px-16 pt-28 pb-16">
