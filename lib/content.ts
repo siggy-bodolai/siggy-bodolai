@@ -29,7 +29,7 @@ const projectFields = `
 `;
 
 export async function getProjects(): Promise<Project[]> {
-  return sanityClient.fetch(`*[_type == "project"] | order(year desc) { ${projectFields} }`);
+  return sanityClient.fetch(`*[_type == "project"] | order(orderRank) { ${projectFields} }`);
 }
 
 export async function getProjectById(id: string): Promise<Project | undefined> {
