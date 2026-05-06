@@ -127,7 +127,7 @@ export default function HomeClient({ projects, name, role, location, heroMedia }
           >
             <div className="flex items-end gap-3">
               <h2 className="font-mono text-[9px] font-bold tracking-normal uppercase text-foreground">
-                {project.title} for {project.client}
+                {project.title}{project.client ? ` for ${project.client}` : ""}
               </h2>
               <span
                 className="font-mono text-[9px] font-bold tracking-normal uppercase text-foreground/40"
@@ -142,7 +142,7 @@ export default function HomeClient({ projects, name, role, location, heroMedia }
             </div>
             <Link
               href={`/projects/${project.id}`}
-              aria-label={`View ${project.title} for ${project.client}`}
+              aria-label={`View ${project.title}${project.client ? ` for ${project.client}` : ""}`}
               className="font-mono text-[9px] font-bold tracking-normal uppercase text-foreground/40 transition-colors hover:text-accent"
             >
               View

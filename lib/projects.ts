@@ -1,7 +1,7 @@
 export interface Project {
   id: string;
   title: string;
-  client: string;
+  client?: string;
   tag?: string;
   year: number;
   featured?: boolean;

@@ -79,7 +79,7 @@ export default function StylingDropdown({ projects }: { projects: Project[] }) {
               onClick={() => setStylingOpen(false)}
               className={`font-mono text-[9px] font-bold tracking-normal transition-colors duration-300 leading-loose ${hoveredIndex === null ? textColor : hoveredIndex === i ? textColor : washColor}`}
             >
-              {project.title} for {project.client}
+              {project.title}{project.client ? ` for ${project.client}` : ""}
             </Link>
           ))}
         </div>
@@ -93,7 +93,7 @@ export default function StylingDropdown({ projects }: { projects: Project[] }) {
             onClick={() => setStylingOpen(false)}
             className={`font-mono text-[9px] font-bold tracking-normal transition-colors duration-300 leading-loose ${hoveredIndex === null ? textColor : hoveredIndex === i ? textColor : washColor}`}
           >
-            {project.title} for {project.client}
+            {project.title}{project.client ? ` for ${project.client}` : ""}
           </Link>
         ))}
       </nav>

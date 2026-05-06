@@ -17,7 +17,7 @@ export const project = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({ name: "title", title: "Campaign", type: "string", validation: (Rule) => Rule.required() }),
-    defineField({ name: "client", title: "Client", type: "string", validation: (Rule) => Rule.required() }),
+    defineField({ name: "client", title: "Client", type: "string" }),
     defineField({ name: "year", title: "Year", type: "number", validation: (Rule) => Rule.required() }),
     defineField({ name: "featured", title: "Show on homepage", type: "boolean" }),
     defineField({ name: "tag", title: "Tag", type: "string" }),
